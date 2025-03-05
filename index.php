@@ -1,9 +1,8 @@
 <?php
 $servername = "IP";
-$username = "root"; 
-$password = "123456"; 
-$database = "34.172.232.243";
-
+$username = root; 
+$password = 123456; 
+$database = 34.172.232.243;
 
 
 // Crear conexión
