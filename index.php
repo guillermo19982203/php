@@ -1,8 +1,10 @@
 <?php
-$servername = "localhost";
+$servername = "IP";
 $username = "root"; 
 $password = "123456"; 
 $database = "34.172.232.243";
+
+
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $database);
