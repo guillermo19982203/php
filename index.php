@@ -1,9 +1,12 @@
 <?php
-$servername = "IP";
-$username = root; 
-$password = 123456; 
-$database = 34.172.232.243;
+// Datos de conexión
+$servername = "34.172.232.243"; // IP del servidor MySQL en GCP
+$username = "root"; // Usuario de MySQL
+$password = "123456"; // Contraseña de MySQL
+$database = "PERSONAL"; // Nombre de la base de datos
 
+// Habilitar reportes de error en MySQLi
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $database);
@@ -13,6 +16,7 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
+// Ejecutar consulta
 $sql = "SELECT * FROM DATOSPERSONA";
 $result = $conn->query($sql);
 ?>
@@ -52,11 +56,11 @@ $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>
-                        <td>{$row['NOMBRES']}</td>
-                        <td>{$row['APELLIDOS']}</td>
-                        <td>{$row['EDAD']}</td>
-                        <td>{$row['TELEFONO']}</td>
-                        <td>{$row['CORREO']}</td>
+                        <td>" . htmlspecialchars($row['NOMBRES']) . "</td>
+                        <td>" . htmlspecialchars($row['APELLIDOS']) . "</td>
+                        <td>" . htmlspecialchars($row['EDAD']) . "</td>
+                        <td>" . htmlspecialchars($row['TELEFONO']) . "</td>
+                        <td>" . htmlspecialchars($row['CORREO']) . "</td>
                       </tr>";
             }
         } else {
@@ -68,5 +72,7 @@ $result = $conn->query($sql);
 </html>
 
 <?php
+// Cerrar conexión
 $conn->close();
 ?>
+
